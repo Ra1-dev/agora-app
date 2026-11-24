@@ -1,0 +1,167 @@
+/* AGORA design tokens — generated, do not edit by hand. Corners: soft.
+   Light = Paros, dark = Night. Organizer colour: override --ag-color-accent (see sheet 07 for the derivation).
+   Breakpoints (use in media queries): sm 600px, md 1024px, lg 1440px. */
+:root {
+  --ag-space-0: 0px;
+  --ag-space-1: 4px;
+  --ag-space-2: 8px;
+  --ag-space-3: 12px;
+  --ag-space-4: 16px;
+  --ag-space-5: 20px;
+  --ag-space-6: 24px;
+  --ag-space-8: 32px;
+  --ag-space-10: 40px;
+  --ag-space-12: 48px;
+  --ag-space-16: 64px;
+  --ag-space-20: 80px;
+  --ag-radius-none: 0px;
+  --ag-radius-control: 2px;
+  --ag-radius-card: 4px;
+  --ag-radius-sheet: 8px;
+  --ag-radius-full: 9999px;
+  --ag-stroke-hairline: 1px;
+  --ag-stroke-rule: 1px;
+  --ag-stroke-strong: 2px;
+  --ag-stroke-stripe: 4px;
+  --ag-stroke-focus: 2px;
+  --ag-size-target-min: 44px;
+  --ag-size-control-sm: 32px;
+  --ag-size-control-md: 40px;
+  --ag-size-control-lg: 48px;
+  --ag-size-icon-sm: 16px;
+  --ag-size-icon-md: 20px;
+  --ag-size-icon-lg: 24px;
+  --ag-size-avatar-sm: 24px;
+  --ag-size-avatar-md: 32px;
+  --ag-size-avatar-lg: 40px;
+  --ag-size-avatar-xl: 64px;
+  --ag-layer-base: 0;
+  --ag-layer-sticky: 100;
+  --ag-layer-dropdown: 200;
+  --ag-layer-scrim: 300;
+  --ag-layer-sheet: 400;
+  --ag-layer-toast: 500;
+  --ag-layer-tooltip: 600;
+  --ag-duration-fast: 120ms;
+  --ag-duration-base: 200ms;
+  --ag-duration-slow: 320ms;
+  --ag-duration-ceremony: 600ms;
+  --ag-font-voice: "Forum", "Times New Roman", serif;
+  --ag-font-text: "Source Sans 3", system-ui, "Segoe UI", sans-serif;
+  --ag-font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --ag-ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --ag-ease-exit: cubic-bezier(.4, 0, 1, 1);
+  --ag-ease-stamp: cubic-bezier(.3, 1.3, .6, 1);
+  --ag-motion-shift: 24px; /* max slide distance; stamp and splash may scale, nothing else */
+  /* event layer (sheet 15): organizer overrides these on levels 2-3; everything else stays AGORA */
+  --ag-event-bg: var(--ag-color-paper);
+  --ag-event-bar: var(--ag-color-surface);
+  --ag-event-name-font: var(--ag-font-voice); /* level 2+: organizer display font, >= 24px */
+  --ag-event-heading-font: var(--ag-font-voice); /* level 3: organizer display font */
+  --ag-event-cover: none; /* level 2+: url(...) of the organizer cover */
+  --ag-event-logo-slot: 132px 22px;
+  /* tracks (sheet 14): order blue green yellow teal pink orange burgundy purple; ΔE<30 to accent moves to the end */
+  --ag-track-edge: 0 0 0 1px color-mix(in srgb, var(--ag-color-ink) 45%, transparent); /* light theme: yellow, orange */
+  --ag-track-ring: inset 0 0 0 3px; /* second run (tracks 9-16): ring dot, append the ink colour */
+  --ag-track-dash: 7px 4px; /* second run: dashed stripe, on/off */
+  --ag-type-display: 400 52px/56px var(--ag-font-voice);
+  --ag-type-figure: 400 40px/44px var(--ag-font-voice);
+  --ag-type-h1: 400 30px/36px var(--ag-font-voice);
+  --ag-type-h2: 400 24px/30px var(--ag-font-voice);
+  --ag-type-title: 600 18px/24px var(--ag-font-text);
+  --ag-type-body: 400 16px/24px var(--ag-font-text);
+  --ag-type-small: 400 14px/20px var(--ag-font-text);
+  --ag-type-time: 500 14px/20px var(--ag-font-text);
+  --ag-type-label: 600 14px/18px var(--ag-font-text);
+  --ag-color-paper: #F2F2F0;
+  --ag-color-surface: #FFFFFF;
+  --ag-color-ink: #151618;
+  --ag-color-muted: #5C5E63;
+  --ag-color-line: #D5D6D3;
+  --ag-color-metal: #8A5A2B;
+  --ag-color-accent: #3255A4;
+  --ag-color-on-accent: #FFFFFF;
+  --ag-color-ink-2: #FF48B0;
+  --ag-color-error: #C42F38;
+  --ag-color-success: #1F7A4D;
+  --ag-color-warning: #8A6100;
+  --ag-color-track-blue: #3255A4;
+  --ag-color-track-pink: #FF48B0;
+  --ag-color-track-green: #00A95C;
+  --ag-color-track-orange: #FF6C2F;
+  --ag-color-track-purple: #765BA7;
+  --ag-color-track-teal: #00838A;
+  --ag-color-track-yellow: #FFE800;
+  --ag-color-track-burgundy: #914E72;
+  --ag-shadow-none: none;
+  --ag-shadow-float: 0 12px 30px rgba(0, 0, 0, .16);
+  --ag-shadow-paper: 0 3px 8px rgba(0, 0, 0, .16);
+  --ag-scrim: rgba(17, 17, 16, .5);
+  --ag-ink-blend: multiply;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ag-color-paper: #111110;
+    --ag-color-surface: #1B1A18;
+    --ag-color-ink: #F0EDE6;
+    --ag-color-muted: #A39E94;
+    --ag-color-line: #302F2B;
+    --ag-color-metal: #C9A24E;
+    --ag-color-accent: #5EC8E5;
+    --ag-color-on-accent: #111110;
+    --ag-color-ink-2: #FF48B0;
+    --ag-color-error: #FF7B7B;
+    --ag-color-success: #5CC28E;
+    --ag-color-warning: #E0B44C;
+    --ag-color-track-blue: #516FB2;
+    --ag-color-track-pink: #FF48B0;
+    --ag-color-track-green: #00A95C;
+    --ag-color-track-orange: #FF6C2F;
+    --ag-color-track-purple: #765BA7;
+    --ag-color-track-teal: #00838A;
+    --ag-color-track-yellow: #FFE800;
+    --ag-color-track-burgundy: #9A5C7D;
+    --ag-shadow-none: none;
+    --ag-shadow-float: 0 12px 30px rgba(0, 0, 0, .45);
+    --ag-shadow-paper: 0 3px 8px rgba(0, 0, 0, .40);
+    --ag-scrim: rgba(0, 0, 0, .6);
+    --ag-ink-blend: screen;
+  }
+}
+:root[data-theme="dark"] {
+  --ag-color-paper: #111110;
+  --ag-color-surface: #1B1A18;
+  --ag-color-ink: #F0EDE6;
+  --ag-color-muted: #A39E94;
+  --ag-color-line: #302F2B;
+  --ag-color-metal: #C9A24E;
+  --ag-color-accent: #5EC8E5;
+  --ag-color-on-accent: #111110;
+  --ag-color-ink-2: #FF48B0;
+  --ag-color-error: #FF7B7B;
+  --ag-color-success: #5CC28E;
+  --ag-color-warning: #E0B44C;
+  --ag-color-track-blue: #516FB2;
+  --ag-color-track-pink: #FF48B0;
+  --ag-color-track-green: #00A95C;
+  --ag-color-track-orange: #FF6C2F;
+  --ag-color-track-purple: #765BA7;
+  --ag-color-track-teal: #00838A;
+  --ag-color-track-yellow: #FFE800;
+  --ag-color-track-burgundy: #9A5C7D;
+  --ag-shadow-none: none;
+  --ag-shadow-float: 0 12px 30px rgba(0, 0, 0, .45);
+  --ag-shadow-paper: 0 3px 8px rgba(0, 0, 0, .40);
+  --ag-scrim: rgba(0, 0, 0, .6);
+  --ag-ink-blend: screen;
+}
+/* motion (sheet 17): with reduced motion, movement becomes a short fade or nothing; loops stop */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ag-duration-fast: 1ms;
+    --ag-duration-base: 120ms;
+    --ag-duration-slow: 120ms;
+    --ag-duration-ceremony: 120ms;
+    --ag-motion-shift: 0px;
+  }
+}

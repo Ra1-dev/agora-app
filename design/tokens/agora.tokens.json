@@ -1,0 +1,624 @@
+{
+  "color": {
+    "light": {
+      "paper": {
+        "$value": "#F2F2F0",
+        "$type": "color"
+      },
+      "surface": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "ink": {
+        "$value": "#151618",
+        "$type": "color"
+      },
+      "muted": {
+        "$value": "#5C5E63",
+        "$type": "color"
+      },
+      "line": {
+        "$value": "#D5D6D3",
+        "$type": "color"
+      },
+      "metal": {
+        "$value": "#8A5A2B",
+        "$type": "color"
+      },
+      "accent": {
+        "$value": "#3255A4",
+        "$type": "color"
+      },
+      "on-accent": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "ink-2": {
+        "$value": "#FF48B0",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "#C42F38",
+        "$type": "color"
+      },
+      "success": {
+        "$value": "#1F7A4D",
+        "$type": "color"
+      },
+      "warning": {
+        "$value": "#8A6100",
+        "$type": "color"
+      },
+      "track-blue": {
+        "$value": "#3255A4",
+        "$type": "color"
+      },
+      "track-pink": {
+        "$value": "#FF48B0",
+        "$type": "color"
+      },
+      "track-green": {
+        "$value": "#00A95C",
+        "$type": "color"
+      },
+      "track-orange": {
+        "$value": "#FF6C2F",
+        "$type": "color"
+      },
+      "track-purple": {
+        "$value": "#765BA7",
+        "$type": "color"
+      },
+      "track-teal": {
+        "$value": "#00838A",
+        "$type": "color"
+      },
+      "track-yellow": {
+        "$value": "#FFE800",
+        "$type": "color"
+      },
+      "track-burgundy": {
+        "$value": "#914E72",
+        "$type": "color"
+      }
+    },
+    "dark": {
+      "paper": {
+        "$value": "#111110",
+        "$type": "color"
+      },
+      "surface": {
+        "$value": "#1B1A18",
+        "$type": "color"
+      },
+      "ink": {
+        "$value": "#F0EDE6",
+        "$type": "color"
+      },
+      "muted": {
+        "$value": "#A39E94",
+        "$type": "color"
+      },
+      "line": {
+        "$value": "#302F2B",
+        "$type": "color"
+      },
+      "metal": {
+        "$value": "#C9A24E",
+        "$type": "color"
+      },
+      "accent": {
+        "$value": "#5EC8E5",
+        "$type": "color"
+      },
+      "on-accent": {
+        "$value": "#111110",
+        "$type": "color"
+      },
+      "ink-2": {
+        "$value": "#FF48B0",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "#FF7B7B",
+        "$type": "color"
+      },
+      "success": {
+        "$value": "#5CC28E",
+        "$type": "color"
+      },
+      "warning": {
+        "$value": "#E0B44C",
+        "$type": "color"
+      },
+      "track-blue": {
+        "$value": "#516FB2",
+        "$type": "color"
+      },
+      "track-pink": {
+        "$value": "#FF48B0",
+        "$type": "color"
+      },
+      "track-green": {
+        "$value": "#00A95C",
+        "$type": "color"
+      },
+      "track-orange": {
+        "$value": "#FF6C2F",
+        "$type": "color"
+      },
+      "track-purple": {
+        "$value": "#765BA7",
+        "$type": "color"
+      },
+      "track-teal": {
+        "$value": "#00838A",
+        "$type": "color"
+      },
+      "track-yellow": {
+        "$value": "#FFE800",
+        "$type": "color"
+      },
+      "track-burgundy": {
+        "$value": "#9A5C7D",
+        "$type": "color"
+      }
+    }
+  },
+  "shadow": {
+    "light": {
+      "none": {
+        "$value": "none",
+        "$type": "shadow"
+      },
+      "float": {
+        "$value": "0 12px 30px rgba(0, 0, 0, .16)",
+        "$type": "shadow"
+      },
+      "paper": {
+        "$value": "0 3px 8px rgba(0, 0, 0, .16)",
+        "$type": "shadow"
+      }
+    },
+    "dark": {
+      "none": {
+        "$value": "none",
+        "$type": "shadow"
+      },
+      "float": {
+        "$value": "0 12px 30px rgba(0, 0, 0, .45)",
+        "$type": "shadow"
+      },
+      "paper": {
+        "$value": "0 3px 8px rgba(0, 0, 0, .40)",
+        "$type": "shadow"
+      }
+    }
+  },
+  "scrim": {
+    "light": {
+      "$value": "rgba(17, 17, 16, .5)",
+      "$type": "color"
+    },
+    "dark": {
+      "$value": "rgba(0, 0, 0, .6)",
+      "$type": "color"
+    }
+  },
+  "font": {
+    "voice": {
+      "$value": "\"Forum\", \"Times New Roman\", serif",
+      "$type": "fontFamily"
+    },
+    "text": {
+      "$value": "\"Source Sans 3\", system-ui, \"Segoe UI\", sans-serif",
+      "$type": "fontFamily"
+    },
+    "mono": {
+      "$value": "\"IBM Plex Mono\", ui-monospace, Consolas, monospace",
+      "$type": "fontFamily"
+    }
+  },
+  "type": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.voice}",
+        "fontSize": "52px",
+        "lineHeight": "56px",
+        "fontWeight": 400
+      }
+    },
+    "figure": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.voice}",
+        "fontSize": "40px",
+        "lineHeight": "44px",
+        "fontWeight": 400,
+        "fontFeature": "tnum"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.voice}",
+        "fontSize": "30px",
+        "lineHeight": "36px",
+        "fontWeight": 400
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.voice}",
+        "fontSize": "24px",
+        "lineHeight": "30px",
+        "fontWeight": 400
+      }
+    },
+    "title": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontSize": "18px",
+        "lineHeight": "24px",
+        "fontWeight": 600
+      }
+    },
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontSize": "16px",
+        "lineHeight": "24px",
+        "fontWeight": 400
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontSize": "14px",
+        "lineHeight": "20px",
+        "fontWeight": 400
+      }
+    },
+    "time": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontSize": "14px",
+        "lineHeight": "20px",
+        "fontWeight": 500,
+        "fontFeature": "tnum"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.text}",
+        "fontSize": "14px",
+        "lineHeight": "18px",
+        "fontWeight": 600,
+        "fontFeature": "smcp"
+      }
+    }
+  },
+  "easing": {
+    "standard": {
+      "$value": "cubic-bezier(.2, 0, 0, 1)",
+      "$type": "cubicBezier"
+    },
+    "exit": {
+      "$value": "cubic-bezier(.4, 0, 1, 1)",
+      "$type": "cubicBezier"
+    },
+    "stamp": {
+      "$value": "cubic-bezier(.3, 1.3, .6, 1)",
+      "$type": "cubicBezier"
+    }
+  },
+  "space": {
+    "0": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "1": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "2": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "3": {
+      "$value": "12px",
+      "$type": "dimension"
+    },
+    "4": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "5": {
+      "$value": "20px",
+      "$type": "dimension"
+    },
+    "6": {
+      "$value": "24px",
+      "$type": "dimension"
+    },
+    "8": {
+      "$value": "32px",
+      "$type": "dimension"
+    },
+    "10": {
+      "$value": "40px",
+      "$type": "dimension"
+    },
+    "12": {
+      "$value": "48px",
+      "$type": "dimension"
+    },
+    "16": {
+      "$value": "64px",
+      "$type": "dimension"
+    },
+    "20": {
+      "$value": "80px",
+      "$type": "dimension"
+    }
+  },
+  "radius": {
+    "none": {
+      "$value": "0px",
+      "$type": "dimension"
+    },
+    "control": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "card": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "sheet": {
+      "$value": "8px",
+      "$type": "dimension"
+    },
+    "full": {
+      "$value": "9999px",
+      "$type": "dimension"
+    }
+  },
+  "stroke": {
+    "hairline": {
+      "$value": "1px",
+      "$type": "dimension"
+    },
+    "rule": {
+      "$value": "1px",
+      "$type": "dimension"
+    },
+    "strong": {
+      "$value": "2px",
+      "$type": "dimension"
+    },
+    "stripe": {
+      "$value": "4px",
+      "$type": "dimension"
+    },
+    "focus": {
+      "$value": "2px",
+      "$type": "dimension"
+    }
+  },
+  "size": {
+    "target-min": {
+      "$value": "44px",
+      "$type": "dimension"
+    },
+    "control-sm": {
+      "$value": "32px",
+      "$type": "dimension"
+    },
+    "control-md": {
+      "$value": "40px",
+      "$type": "dimension"
+    },
+    "control-lg": {
+      "$value": "48px",
+      "$type": "dimension"
+    },
+    "icon-sm": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "icon-md": {
+      "$value": "20px",
+      "$type": "dimension"
+    },
+    "icon-lg": {
+      "$value": "24px",
+      "$type": "dimension"
+    },
+    "avatar-sm": {
+      "$value": "24px",
+      "$type": "dimension"
+    },
+    "avatar-md": {
+      "$value": "32px",
+      "$type": "dimension"
+    },
+    "avatar-lg": {
+      "$value": "40px",
+      "$type": "dimension"
+    },
+    "avatar-xl": {
+      "$value": "64px",
+      "$type": "dimension"
+    }
+  },
+  "layer": {
+    "base": {
+      "$value": 0,
+      "$type": "number"
+    },
+    "sticky": {
+      "$value": 100,
+      "$type": "number"
+    },
+    "dropdown": {
+      "$value": 200,
+      "$type": "number"
+    },
+    "scrim": {
+      "$value": 300,
+      "$type": "number"
+    },
+    "sheet": {
+      "$value": 400,
+      "$type": "number"
+    },
+    "toast": {
+      "$value": 500,
+      "$type": "number"
+    },
+    "tooltip": {
+      "$value": 600,
+      "$type": "number"
+    }
+  },
+  "breakpoint": {
+    "sm": {
+      "$value": "600px",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "1024px",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "1440px",
+      "$type": "dimension"
+    }
+  },
+  "duration": {
+    "fast": {
+      "$value": "120ms",
+      "$type": "duration"
+    },
+    "base": {
+      "$value": "200ms",
+      "$type": "duration"
+    },
+    "slow": {
+      "$value": "320ms",
+      "$type": "duration"
+    },
+    "ceremony": {
+      "$value": "600ms",
+      "$type": "duration"
+    }
+  },
+  "track": {
+    "$description": "Track ink rules (sheet 14). Assign inks in order; inks within clash-delta-e (CIE76) of the organizer accent move to the end. Tracks 9-16 reuse the order as a second run with ring dots and dashed stripes. Over 16: colour by organizer stream. The track name is always shown next to the colour.",
+    "order": {
+      "$type": "other",
+      "$value": [
+        "blue",
+        "green",
+        "yellow",
+        "teal",
+        "pink",
+        "orange",
+        "burgundy",
+        "purple"
+      ]
+    },
+    "clash-delta-e": {
+      "$type": "number",
+      "$value": 30
+    },
+    "edge-inks-light": {
+      "$type": "other",
+      "$value": [
+        "yellow",
+        "orange"
+      ],
+      "$description": "Get a 1px edge in ink at 45% on light surfaces"
+    },
+    "second-run": {
+      "$type": "other",
+      "$value": {
+        "dot": "ring 3px",
+        "stripe": "dashed 7px on, 4px off"
+      }
+    },
+    "print-pantone": {
+      "$type": "other",
+      "$value": {
+        "blue": "286 U",
+        "green": "354 U",
+        "yellow": "Yellow U",
+        "teal": "321 U",
+        "pink": "806 U",
+        "orange": "151 U",
+        "burgundy": "229 U",
+        "purple": "2685 U"
+      },
+      "$description": "Reference only, verify against a Pantone guide"
+    },
+    "print-bw-pattern": {
+      "$type": "other",
+      "$value": [
+        "solid",
+        "diagonal",
+        "dots",
+        "horizontal",
+        "grey",
+        "grid",
+        "vertical",
+        "checks"
+      ]
+    }
+  },
+  "event": {
+    "$description": "Organizer presence (sheet 15). The frame (grid, components, programme rows, track inks, semantic colours, Source Sans text, icons) never changes. Level 1 Signature: logo + action colour (overrides color.accent). Level 2 Cover: + cover image, organizer font in the event name, default theme. Level 3 Host: + background tint, organizer font in screen headings, bar in brand colours. Monochrome organizer colour -> accent = color.ink. Organizer fonts only at >= 24px and must include Latin + Kazakh Cyrillic.",
+    "levels": {
+      "$type": "other",
+      "$value": [
+        "signature",
+        "cover",
+        "host"
+      ]
+    },
+    "logo-slot": {
+      "$type": "other",
+      "$value": {
+        "width": "132px",
+        "height": "22px"
+      }
+    },
+    "font-min-size": {
+      "$type": "dimension",
+      "$value": "24px"
+    }
+  },
+  "motion": {
+    "$description": "Motion (sheet 17). Opacity and slides up to 24px only; scale only for the album stamp and the splash wreath. Exit is faster than enter. Only Live now (1600ms) and loading skeletons (1400ms) loop. prefers-reduced-motion: slides and scale off, fades <= 120ms, loops stop.",
+    "shift-max": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "loop-live": {
+      "$type": "duration",
+      "$value": "1600ms"
+    },
+    "loop-skeleton": {
+      "$type": "duration",
+      "$value": "1400ms"
+    }
+  },
+  "$description": "AGORA design tokens. Corners: soft. Colour modes: light (Paros) and dark (Night). Organizer colour overrides color.*.accent."
+}

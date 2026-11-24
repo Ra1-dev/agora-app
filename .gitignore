@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# build and test output
+build/
+dist/
+coverage/
+*.tsbuildinfo
+
+# local database
+data/
+*.db
+*.db-journal
+*.sqlite
+
+# env
+.env*
+!.env.example
+
+# logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+.vercel
+
+# generated from design/ by scripts (sync-assets, seed)
+public/brand/
+public/covers/
+
+# agent files (not part of the repo)
+.claude/
+CLAUDE.md
