@@ -1,0 +1,57 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-1);
+  min-height: 22px;
+  padding: 0 var(--ag-space-2);
+  border: var(--ag-stroke-hairline) solid currentColor;
+  border-radius: var(--ag-radius-control);
+  font: var(--ag-type-label);
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.live {
+  color: var(--ag-color-error);
+}
+
+.rescheduled,
+.room-change {
+  color: var(--ag-color-warning);
+}
+
+.canceled {
+  color: var(--ag-color-error);
+}
+
+.checked-in {
+  color: var(--ag-color-success);
+}
+
+.picked {
+  border-color: var(--ag-color-accent);
+  background: var(--ag-color-accent);
+  color: var(--ag-color-on-accent);
+}
+
+/* The only looping motion besides skeletons: "Live now", 1.6s (S17). */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--ag-radius-full);
+  background: currentColor;
+  animation: pulse 1.6s var(--ag-ease-standard) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}

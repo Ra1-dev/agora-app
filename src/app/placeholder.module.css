@@ -1,0 +1,38 @@
+/* Temporary screens for routes built in later steps. */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: var(--ag-space-1) var(--ag-space-2) var(--ag-space-1) var(--ag-space-4);
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  background: var(--ag-event-bar);
+}
+
+.logo img {
+  display: block;
+  height: 22px;
+  width: auto;
+}
+
+.main {
+  display: grid;
+  gap: var(--ag-space-4);
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--ag-space-6) var(--ag-space-4);
+}
+
+.title {
+  font: var(--ag-type-h1);
+  font-family: var(--ag-event-name-font);
+}
+
+.muted {
+  color: var(--ag-color-muted);
+}
+
+.link {
+  color: var(--ag-color-accent);
+  font: var(--ag-type-label);
+}

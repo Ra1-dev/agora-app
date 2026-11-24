@@ -1,0 +1,100 @@
+/* Buttons (S12 §12.1): primary in the accent (one per screen), secondary, text, danger. */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ag-space-2);
+  border-radius: var(--ag-radius-control);
+  font: var(--ag-type-label);
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    filter var(--ag-duration-fast) var(--ag-ease-standard),
+    background-color var(--ag-duration-fast) var(--ag-ease-standard);
+}
+
+/* Keep the tap target at least 44px even for small buttons. */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: min(0px, calc((100% - var(--ag-size-target-min)) / 2)) 0;
+}
+
+.lg {
+  min-height: var(--ag-size-control-lg);
+  padding: 0 var(--ag-space-5);
+}
+
+.md {
+  min-height: var(--ag-size-control-md);
+  padding: 0 var(--ag-space-4);
+}
+
+.sm {
+  min-height: var(--ag-size-control-sm);
+  padding: 0 var(--ag-space-3);
+  font-size: 14px;
+}
+
+.block {
+  width: 100%;
+}
+
+.primary {
+  border: 0;
+  background: var(--ag-color-accent);
+  color: var(--ag-color-on-accent);
+}
+
+.primary:hover {
+  filter: brightness(0.92);
+}
+
+.primary:active {
+  filter: brightness(0.84);
+}
+
+.secondary {
+  border: var(--ag-stroke-rule) solid var(--ag-color-ink);
+  background: transparent;
+  color: var(--ag-color-ink);
+}
+
+.secondary:hover {
+  background: color-mix(in srgb, var(--ag-color-ink) 6%, transparent);
+}
+
+.secondary:active {
+  background: color-mix(in srgb, var(--ag-color-ink) 12%, transparent);
+}
+
+.text {
+  border: 0;
+  background: transparent;
+  color: var(--ag-color-accent);
+  padding-inline: var(--ag-space-2);
+}
+
+.text:hover {
+  text-decoration: underline;
+}
+
+.danger {
+  border: var(--ag-stroke-rule) solid var(--ag-color-error);
+  background: transparent;
+  color: var(--ag-color-error);
+}
+
+.danger:hover {
+  background: color-mix(in srgb, var(--ag-color-error) 8%, transparent);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  filter: none;
+  opacity: 0.45;
+}

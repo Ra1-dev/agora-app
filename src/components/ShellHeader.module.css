@@ -1,0 +1,25 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ag-layer-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-4);
+  min-height: 56px;
+  padding: var(--ag-space-1) var(--ag-space-2) var(--ag-space-1) var(--ag-space-4);
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  background: var(--ag-color-surface);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ag-size-target-min);
+}
+
+.logo img {
+  display: block;
+  height: 18px;
+  width: auto;
+}

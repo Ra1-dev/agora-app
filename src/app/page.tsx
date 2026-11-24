@@ -1,30 +1,61 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Icon } from "@/components/Icon";
+import { ShellHeader } from "@/components/ShellHeader";
+import { StatusChip } from "@/components/StatusChip";
+import { currentUser } from "@/lib/auth/current-user";
+import { now } from "@/lib/clock";
+import { formatDateSpan } from "@/lib/time";
+import { isEventLive, listEventsForUser } from "@/server/events";
+import { JoinWithCode } from "./JoinWithCode";
 import styles from "./page.module.css";
 
-// Scaffold check page. Step 4 replaces it with "My events".
-export default function Home() {
+export const metadata: Metadata = { title: "My events" };
+export const dynamic = "force-dynamic";
+
+/** My events: the only AGORA-owned list (design-decisions §8). */
+export default async function MyEventsPage() {
+  const viewer = await currentUser("participant");
+  const events = listEventsForUser(viewer.id).filter((e) => e.role === "participant");
+  const current = now();
+
   return (
-    <main className={styles.main}>
-      <div className={styles.logo}>
-        <img className="ag-only-light" src="/brand/agora-logo-ink.svg" alt="AGΩRA" />
-        <img className="ag-only-dark" src="/brand/agora-logo-white.svg" alt="AGΩRA" />
-      </div>
-      <h1 className={styles.title}>Know where to be. Know who to meet.</h1>
-      <p className={styles.lead}>The demo is being built. My events appears here next.</p>
-      <ul className={styles.checks}>
-        <li>
-          <Icon name="program" /> Source Sans 3 for text, <span className="ag-label-caps">Hall B</span> in small caps
-        </li>
-        <li>
-          <Icon name="time" /> <span className={styles.time}>11:30–12:15</span> tabular numerals
-        </li>
-        <li>
-          <Icon name="room" /> Event code <span className="ag-mono">STEPPE27</span>
-        </li>
-      </ul>
-      <button type="button" className={styles.primary}>
-        <Icon name="add" /> Join with an event code
-      </button>
-    </main>
+    <>
+      <ShellHeader />
+      <main className={styles.main}>
+        <h1 className={styles.title}>My events</h1>
+
+        {events.length === 0 ? (
+          <div className={styles.empty}>
+            <p className={styles.emptyTitle}>No events yet</p>
+            <p className={styles.muted}>Join with the code from your badge or invitation, and the event shows up here.</p>
+          </div>
+        ) : (
+          <ul className={styles.list}>
+            {events.map((event) => {
+              const live = isEventLive(event, current);
+              return (
+                <li key={event.id}>
+                  <Link href={`/e/${event.slug}`} className={styles.row}>
+                    {/* The organizer's mark, never recoloured (S07). */}
+                    <img className={styles.mark} src={event.markUrl ?? event.logoUrl} alt="" width={44} height={44} />
+                    <span className={styles.text}>
+                      <span className={styles.name}>{event.name}</span>
+                      <span className={styles.muted}>
+                        {formatDateSpan(event.startsOn, event.endsOn)}, {event.city}
+                      </span>
+                    </span>
+                    {live ? <StatusChip status="live" /> : <Icon name="chevron-right" />}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
+        <JoinWithCode />
+        <p className={styles.footnote}>Past events and your certificates stay here.</p>
+      </main>
+    </>
   );
 }

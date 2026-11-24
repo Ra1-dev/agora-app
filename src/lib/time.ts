@@ -109,6 +109,11 @@ export function eventDays(startsOn: string, endsOn: string): string[] {
   return days;
 }
 
+/** "May 14–16" or "May 30 – Jun 1" (no year), as in the My events list. */
+export function formatDateSpan(startsOn: string, endsOn: string): string {
+  return formatDateRange(startsOn, endsOn).replace(/, \d{4}$/, "");
+}
+
 /** "May 14–16, 2027" or "May 30 – Jun 1, 2027". */
 export function formatDateRange(startsOn: string, endsOn: string): string {
   const fmt = (key: string, opts: Intl.DateTimeFormatOptions) =>
