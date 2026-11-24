@@ -8,10 +8,16 @@ This repository is the local demo built for the NU senior project "AI-Powered Pl
 
 ## Status
 
-Context and design assets are in place; the app is not built yet.
+In progress. Done so far: project scaffold, the pure logic with tests, and the database with seed data. Screens come next.
 
 - `docs/` — project documents, demo scope and design decisions
 - `design/` — design tokens, logos, icons and the cover generator
+- `src/lib/` — pure logic: brand colours and track inks, overlaps, event time zone, picks (TF-IDF), people suggestions
+- `src/db/` and `drizzle/` — schema (Drizzle + SQLite) and migrations
+- `scripts/seed/` — the fictional STEPPE AI Summit 2027 (May 14–16, Astana): 41 sessions, 6 tracks, 5 rooms, 15 speakers, 30 participants with profiles and 410 lightweight attendees
+- `tests/` — Vitest (`npm test`)
+
+The demo runs on a clock that starts on Saturday, May 15, 11:20 Astana time, when you seed, and moves in real time. All people and organizations in the seed are invented.
 
 ## Quickstart
 

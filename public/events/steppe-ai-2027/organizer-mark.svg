@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44" role="img" aria-label="Steppe Digital Foundation">
+  <!-- Fictional organizer mark for the AGORA demo. -->
+  <rect width="44" height="44" rx="4" fill="#5B3DF5"/>
+  <circle cx="22" cy="17" r="7" fill="#FFFFFF"/>
+  <path d="M8 29h28M12 34h20M16 39h12" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="square"/>
+</svg>

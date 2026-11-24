@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 44" width="132" height="22" role="img" aria-label="Steppe Digital Foundation">
+  <!-- Fictional organizer for the AGORA demo. Sun over the steppe horizon. -->
+  <circle cx="22" cy="17" r="9" fill="#5B3DF5"/>
+  <path d="M2 30h40M8 36h28M14 42h16" stroke="#F0EDE6" stroke-width="3" stroke-linecap="square"/>
+  <text x="54" y="24" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#F0EDE6">STEPPE</text>
+  <text x="55" y="40" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="600" letter-spacing="2.2" fill="#A39E94">DIGITAL FOUNDATION</text>
+</svg>
