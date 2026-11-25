@@ -1,0 +1,217 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-5);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ag-space-2) var(--ag-space-4);
+}
+
+.title {
+  font: var(--ag-type-h1);
+}
+
+.profileLink,
+.inlineLink {
+  color: var(--ag-color-accent);
+  font: var(--ag-type-label);
+  font-size: 15px;
+}
+
+.profileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  min-height: var(--ag-size-target-min);
+  text-decoration: none;
+}
+
+.profileLink:hover {
+  text-decoration: underline;
+}
+
+/* Privacy in plain words (voice §4). */
+.privacy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+  font: var(--ag-type-small);
+  font-size: 15px;
+}
+
+.privacyIcon {
+  margin-top: 1px;
+  color: var(--ag-color-muted);
+}
+
+.section {
+  display: grid;
+  gap: var(--ag-space-2);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ag-space-2);
+  font: var(--ag-type-h2);
+  font-family: var(--ag-event-heading-font);
+}
+
+.count {
+  font: var(--ag-type-label);
+  color: var(--ag-color-muted);
+}
+
+.muted {
+  color: var(--ag-color-muted);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+}
+
+/* Person row (S12 §12.5). */
+.person {
+  display: grid;
+  grid-template-columns: var(--ag-size-avatar-lg) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--ag-space-2) var(--ag-space-3);
+  padding: var(--ag-space-3) 0;
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+.actions {
+  grid-column: 2;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.actions:empty {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .person {
+    grid-template-columns: var(--ag-size-avatar-lg) minmax(0, 1fr) auto;
+  }
+
+  .actions {
+    grid-column: auto;
+    justify-content: flex-end;
+  }
+}
+
+.off {
+  opacity: 0.75;
+}
+
+.personText {
+  display: grid;
+  min-width: 0;
+}
+
+.personName {
+  justify-self: start;
+  color: var(--ag-color-ink);
+  font: var(--ag-type-label);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.personName:hover {
+  text-decoration: underline;
+}
+
+.meta,
+.preview {
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+}
+
+.preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reason {
+  font: var(--ag-type-small);
+  color: var(--ag-color-accent);
+}
+
+/* ---------- person page ---------- */
+
+.back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  min-height: var(--ag-size-target-min);
+  color: var(--ag-color-ink);
+  font: var(--ag-type-label);
+  text-decoration: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--ag-space-4);
+}
+
+.fullName {
+  font: var(--ag-type-h2);
+  font-family: var(--ag-event-heading-font);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ag-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ag-size-control-sm);
+  padding: 0 var(--ag-space-3);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-control);
+  background: var(--ag-color-surface);
+  font: var(--ag-type-label);
+  font-size: 14px;
+}
+
+.tagShared {
+  border-color: var(--ag-color-accent);
+  color: var(--ag-color-accent);
+}
+
+.field {
+  display: grid;
+  gap: var(--ag-space-2);
+  padding-top: var(--ag-space-4);
+  border-top: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+.fieldTitle {
+  font: var(--ag-type-label);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.07em;
+  color: var(--ag-color-muted);
+}

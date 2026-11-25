@@ -26,54 +26,6 @@
   font: var(--ag-type-title);
 }
 
-/* ---------- search ---------- */
-
-.search {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.searchIcon {
-  position: absolute;
-  left: var(--ag-space-3);
-  color: var(--ag-color-muted);
-  pointer-events: none;
-}
-
-.searchInput {
-  width: 100%;
-  min-height: var(--ag-size-control-lg);
-  padding: 0 var(--ag-space-12) 0 var(--ag-space-10);
-  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
-  border-radius: var(--ag-radius-control);
-  background: var(--ag-color-surface);
-  font: var(--ag-type-body);
-}
-
-.searchInput::-webkit-search-cancel-button {
-  display: none;
-}
-
-.searchInput:focus-visible {
-  outline: none;
-  border-color: var(--ag-color-accent);
-  box-shadow: 0 0 0 1px var(--ag-color-accent);
-}
-
-.clear {
-  position: absolute;
-  right: 0;
-  display: grid;
-  place-items: center;
-  width: var(--ag-size-target-min);
-  height: var(--ag-size-target-min);
-  border: 0;
-  background: transparent;
-  color: var(--ag-color-muted);
-  cursor: pointer;
-}
-
 /* ---------- track chips ---------- */
 
 .chips {

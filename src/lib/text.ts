@@ -33,3 +33,8 @@ export function truncate(text: string, max: number): string {
 export function plural(count: number, one: string, many = `${one}s`): string {
   return `${count} ${count === 1 ? one : many}`;
 }
+
+/** "Aruzhan Kassymova" → "Aruzhan", for sentences: "You can message once Aruzhan accepts your request." */
+export function firstName(name: string): string {
+  return name.trim().split(/\s+/)[0] ?? "";
+}

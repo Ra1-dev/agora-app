@@ -3,13 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProgrammeList, ProgrammeRow } from "@/components/ProgrammeRow";
 import { TrackDot } from "@/components/TrackDot";
+import { UrlSearch } from "@/components/UrlSearch";
 import { requireMember } from "@/lib/auth/current-user";
 import { now } from "@/lib/clock";
 import { dayKey, eventDays, formatDayKey } from "@/lib/time";
 import { getEventBySlug } from "@/server/events";
 import { loadProgram, searchProgram, type ProgramSession } from "@/server/program";
 import { toRow, viewerContext } from "@/server/rows";
-import { ProgramSearch } from "./ProgramSearch";
 import styles from "./program.module.css";
 
 export const metadata: Metadata = { title: "Program" };
@@ -78,7 +78,7 @@ export default async function ProgramPage({ params, searchParams }: Props) {
     <div className={styles.page}>
       <h1 className={styles.title}>Program</h1>
 
-      <ProgramSearch />
+      <UrlSearch id="program-search" label="Search sessions, speakers, topics" placeholder="Search sessions, speakers, topics" />
 
       <nav className={styles.chips} aria-label="Filter by track">
         <Link href={href({ track: null })} className={styles.chip} aria-current={!track ? "true" : undefined} scroll={false}>

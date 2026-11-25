@@ -2,11 +2,11 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Icon } from "@/components/Icon";
-import styles from "./program.module.css";
+import { Icon } from "./Icon";
+import styles from "./UrlSearch.module.css";
 
-/** Search sessions, speakers and topics (FR-10). Updates the URL as you type. */
-export function ProgramSearch() {
+/** Search box that keeps its value in the URL (?q=) and updates it as you type. */
+export function UrlSearch({ label, placeholder, id }: { label: string; placeholder: string; id: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
@@ -37,15 +37,15 @@ export function ProgramSearch() {
         push(value);
       }}
     >
-      <label htmlFor="program-search" className="ag-sr-only">
-        Search sessions, speakers, topics
+      <label htmlFor={id} className="ag-sr-only">
+        {label}
       </label>
       <Icon name="search" className={styles.searchIcon} />
       <input
-        id="program-search"
+        id={id}
         type="search"
         className={styles.searchInput}
-        placeholder="Search sessions, speakers, topics"
+        placeholder={placeholder}
         value={value}
         autoComplete="off"
         onChange={(e) => {
