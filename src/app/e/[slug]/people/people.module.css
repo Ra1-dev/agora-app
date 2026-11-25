@@ -84,6 +84,7 @@
 
 /* Person row (S12 §12.5). */
 .person {
+  position: relative;
   display: grid;
   grid-template-columns: var(--ag-size-avatar-lg) minmax(0, 1fr);
   align-items: center;
@@ -93,6 +94,8 @@
 }
 
 .actions {
+  position: relative;
+  z-index: 1;
   grid-column: 2;
   display: flex;
   justify-content: flex-start;
@@ -132,6 +135,13 @@
 
 .personName:hover {
   text-decoration: underline;
+}
+
+/* The whole row opens the person (44px+ tap target); actions sit above the stretched link. */
+.personName::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 .meta,

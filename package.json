@@ -8,16 +8,14 @@
     "node": ">=22"
   },
   "scripts": {
-    "predev": "node scripts/check-db.mjs",
-    "dev": "next dev",
-    "prebuild": "node scripts/sync-assets.mjs",
-    "build": "next build",
-    "start": "next start",
-    "db:generate": "drizzle-kit generate",
+    "dev": "node scripts/check-db.mjs && next dev",
+    "build": "node scripts/sync-assets.mjs && next build",
+    "start": "node scripts/sync-assets.mjs && next start",
     "db:seed": "tsx scripts/seed.ts",
-    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "better-sqlite3": "^13.2.0",

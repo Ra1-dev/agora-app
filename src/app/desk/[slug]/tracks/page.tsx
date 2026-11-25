@@ -21,7 +21,7 @@ export default async function TracksPage({ params }: { params: Promise<{ slug: s
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>Tracks &amp; rooms</h1>
-      <p className={styles.hint}>Read-only in this demo. Track colours are assigned by AGORA from the event colour; the track name always appears next to its colour.</p>
+      <p className={styles.hint}>Read-only in this demo. AGORA assigns track colors from the event color; the track name always appears next to its color.</p>
       <section className={styles.section} aria-labelledby="tracks">
         <h2 id="tracks">Tracks</h2>
         <ol className={styles.list}>
