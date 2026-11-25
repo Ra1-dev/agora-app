@@ -1,0 +1,227 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-5);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ag-space-2) var(--ag-space-4);
+}
+
+.title {
+  font: var(--ag-type-h1);
+}
+
+.updated {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+}
+
+.muted {
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+}
+
+/* ---------- filters: one row above the numbers ---------- */
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ag-space-3);
+}
+
+@media (min-width: 1024px) {
+  .filters {
+    grid-template-columns: 180px 120px 120px 160px minmax(0, 1fr);
+  }
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: var(--ag-space-1);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .wide {
+    grid-column: auto;
+  }
+}
+
+.filterLabel {
+  font: var(--ag-type-label);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.07em;
+  color: var(--ag-color-muted);
+}
+
+.select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--ag-size-target-min);
+  padding: 0 var(--ag-space-2);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-control);
+  background: var(--ag-color-surface);
+  font: var(--ag-type-small);
+  font-size: 15px;
+}
+
+.select:disabled {
+  opacity: 0.5;
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+}
+
+/* ---------- stat tiles (hero numbers) ---------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ag-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  .tiles {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.tile {
+  display: grid;
+  gap: var(--ag-space-1);
+  padding: var(--ag-space-4);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+}
+
+.tileLabel {
+  color: var(--ag-color-muted);
+}
+
+.figure {
+  font: var(--ag-type-figure);
+  font-variant-numeric: tabular-nums;
+}
+
+.today {
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+}
+
+/* ---------- sessions table ---------- */
+
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-3);
+}
+
+.tableWrap {
+  /* Contains absolutely positioned screen-reader text inside the scroller. */
+  position: relative;
+  overflow-x: auto;
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+}
+
+.table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font: var(--ag-type-small);
+  font-size: 15px;
+}
+
+.table th,
+.table td {
+  padding: var(--ag-space-2) var(--ag-space-3);
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table thead th {
+  font: var(--ag-type-label);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.07em;
+  color: var(--ag-color-muted);
+}
+
+.table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.table tbody tr:hover {
+  background: color-mix(in srgb, var(--ag-color-ink) 4%, transparent);
+}
+
+.num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sessionCell {
+  font-weight: 400;
+}
+
+.sessionTitle {
+  display: block;
+  font: var(--ag-type-label);
+  font-size: 15px;
+}
+
+.sessionMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  color: var(--ag-color-muted);
+}
+
+.track {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  white-space: nowrap;
+}
+
+.barCol {
+  width: 22%;
+  min-width: 100px;
+}
+
+/* Thin bar with a rounded data end, in the track's ink; the track name sits in its own column. */
+.bar {
+  display: block;
+  width: var(--w);
+  min-width: 2px;
+  height: 8px;
+  border-radius: 0 4px 4px 0;
+  background: var(--ink);
+}

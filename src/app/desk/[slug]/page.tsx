@@ -1,39 +1,161 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ViewingAs } from "@/components/ViewingAs";
-import { AccessError, requireOrganizer } from "@/lib/auth/current-user";
+import type { CSSProperties } from "react";
+import { buttonClass } from "@/components/Button";
+import { Icon } from "@/components/Icon";
+import { StatusChip } from "@/components/StatusChip";
+import { TrackDot } from "@/components/TrackDot";
+import { requireOrganizer } from "@/lib/auth/current-user";
+import { now } from "@/lib/clock";
+import { dayKey, eventDays, formatDayKey, formatTime, formatUpdated, zonedParts } from "@/lib/time";
 import { getEventBySlug } from "@/server/events";
-import styles from "../../placeholder.module.css";
+import { eventStats } from "@/server/organizer";
+import { loadProgram } from "@/server/program";
+import { StatsFilters } from "./StatsFilters";
+import styles from "./overview.module.css";
 
-export const metadata: Metadata = { title: "Organizer desk" };
-export const dynamic = "force-dynamic";
+export const metadata: Metadata = { title: "Overview" };
 
-// Placeholder until build step 9 (Overview, Sessions, Announcements, Tracks and rooms).
-export default async function DeskPlaceholder({ params }: { params: Promise<{ slug: string }> }) {
-  const event = getEventBySlug((await params).slug);
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ day?: string; track?: string; session?: string; from?: string; to?: string; fresh?: string }>;
+};
+
+const fmt = new Intl.NumberFormat("en-US");
+const TIME = /^\d{2}:\d{2}$/;
+
+/** Overview (UC-06): aggregates only, with filters and how fresh they are. */
+export default async function OverviewPage({ params, searchParams }: Props) {
+  const { slug } = await params;
+  const event = getEventBySlug(slug);
   if (!event) notFound();
-  let message: string | null = null;
-  try {
-    const organizer = await requireOrganizer(event.id);
-    message = `Viewing as ${organizer.name}, organizer. The organizer desk arrives in build step 9.`;
-  } catch (error) {
-    if (!(error instanceof AccessError)) throw error;
-    message = error.message;
+  await requireOrganizer(event.id);
+  const sp = await searchParams;
+  const current = now();
+  const program = loadProgram(event);
+  const days = eventDays(event.startsOn, event.endsOn);
+
+  const filter = {
+    day: sp.day && days.includes(sp.day) ? sp.day : undefined,
+    trackId: program.tracks.some((t) => t.id === sp.track) ? sp.track : undefined,
+    sessionId: program.byId.has(sp.session ?? "") ? sp.session : undefined,
+    from: sp.from && TIME.test(sp.from) ? sp.from : undefined,
+    to: sp.to && TIME.test(sp.to) ? sp.to : undefined,
+  };
+  if (!filter.day) {
+    filter.from = undefined;
+    filter.to = undefined;
   }
+  const stats = eventStats(event, filter, current, sp.fresh === "1");
+  const maxSaves = Math.max(1, ...stats.sessions.map((s) => s.saves));
+  const refreshHref = `/desk/${slug}?${new URLSearchParams({ ...Object.fromEntries(Object.entries(sp).filter(([k, v]) => v && k !== "fresh")), fresh: "1" })}`;
+
   return (
-    <>
-      <header className={styles.header}>
-        {/* On the desk AGORA is the host: plain logo on the left (S12 §12.9). */}
-        <span className={styles.logo}>
-          <img className="ag-only-light" src="/brand/agora-logo-ink.svg" alt="AGΩRA" />
-          <img className="ag-only-dark" src="/brand/agora-logo-white.svg" alt="AGΩRA" />
-        </span>
-        <ViewingAs surface="desk" eventSlug={event.slug} />
-      </header>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{event.name}</h1>
-        <p className={styles.muted}>{message}</p>
-      </main>
-    </>
+    <div className={styles.page}>
+      <div className={styles.head}>
+        <h1 className={styles.title}>Overview</h1>
+        <p className={styles.updated}>
+          <Icon name="time" size={16} />
+          {formatUpdated(stats.computedAt, current)}
+          <Link href={refreshHref} className={buttonClass({ variant: "text", size: "sm" })} scroll={false}>
+            <Icon name="refresh" size={16} />
+            Refresh
+          </Link>
+        </p>
+      </div>
+
+      <StatsFilters
+        days={days.map((d) => ({ value: d, label: formatDayKey(d) }))}
+        tracks={program.tracks.map((t) => ({ value: t.id, label: t.name }))}
+        sessions={program.sessions.map((s) => ({
+          value: s.id,
+          label: `${zonedParts(s.startsAt, event.timeZone).weekday} ${formatTime(s.startsAt, event.timeZone)} · ${s.title}`,
+          trackId: s.track.id,
+          day: dayKey(s.startsAt, event.timeZone),
+        }))}
+      />
+
+      {stats.empty ? (
+        <p className={styles.notice} role="status">
+          <Icon name="info" size={18} />
+          {filter.from || filter.to
+            ? `No activity between ${filter.from ?? "00:00"} and ${filter.to ?? "24:00"}. Try a wider range.`
+            : `No activity on ${formatDayKey(filter.day!)}. Try a wider range.`}
+        </p>
+      ) : null}
+
+      <ul className={styles.tiles} aria-label="Totals">
+        {stats.tiles.map((t) => (
+          <li key={t.key} className={styles.tile}>
+            <span className={`${styles.tileLabel} ag-label-caps`}>{t.label}</span>
+            <span className={styles.figure}>{fmt.format(t.value)}</span>
+            <span className={styles.today}>{t.today ? `+${fmt.format(t.today)} today` : "None today yet"}</span>
+          </li>
+        ))}
+      </ul>
+      {filter.trackId || filter.sessionId ? (
+        <p className={styles.muted}>Registrations and connections are for the whole event; the other totals follow the filters.</p>
+      ) : null}
+
+      <section className={styles.section} aria-labelledby="sessions-table">
+        <h2 id="sessions-table">Sessions</h2>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th scope="col">Session</th>
+                <th scope="col">Track</th>
+                <th scope="col" className={styles.num}>
+                  Views
+                </th>
+                <th scope="col" className={styles.num}>
+                  Saves
+                </th>
+                <th scope="col" className={styles.num}>
+                  Check-ins
+                </th>
+                <th scope="col" className={styles.barCol}>
+                  <span className="ag-sr-only">Saves, relative</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {stats.sessions.map((s) => {
+                const track = program.tracks.find((t) => t.id === s.trackId);
+                const ink = program.inks.get(s.trackId);
+                return (
+                  <tr key={s.id}>
+                    <th scope="row" className={styles.sessionCell}>
+                      <span className={styles.sessionTitle}>{s.title}</span>
+                      <span className={styles.sessionMeta}>
+                        {zonedParts(s.startsAt, event.timeZone).weekday} {formatTime(s.startsAt, event.timeZone)}
+                        {s.canceled ? <StatusChip status="canceled" /> : null}
+                      </span>
+                    </th>
+                    <td>
+                      <span className={styles.track}>
+                        <TrackDot ink={ink} />
+                        {track?.name}
+                      </span>
+                    </td>
+                    <td className={styles.num}>{fmt.format(s.views)}</td>
+                    <td className={styles.num}>{fmt.format(s.saves)}</td>
+                    <td className={styles.num}>{fmt.format(s.checkIns)}</td>
+                    <td className={styles.barCol} aria-hidden="true">
+                      <span
+                        className={styles.bar}
+                        style={{ "--w": `${(s.saves / maxSaves) * 100}%`, "--ink": ink?.ink ? `var(--ag-color-track-${ink.ink})` : "var(--ag-color-muted)" } as CSSProperties}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className={styles.muted}>Totals only. Private messages are never part of these numbers.</p>
+      </section>
+    </div>
   );
 }

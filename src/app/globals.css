@@ -72,6 +72,9 @@ svg {
 /* Visually hidden, still read by screen readers. */
 .ag-sr-only {
   position: absolute;
+  /* Pinned to the start so it can never widen a page from inside a scroller. */
+  top: 0;
+  left: 0;
   width: 1px;
   height: 1px;
   overflow: hidden;

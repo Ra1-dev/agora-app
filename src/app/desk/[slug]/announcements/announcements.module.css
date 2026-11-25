@@ -1,0 +1,119 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-6);
+  max-width: 760px;
+}
+
+.title {
+  font: var(--ag-type-h1);
+}
+
+.composer {
+  display: grid;
+  gap: var(--ag-space-2);
+  padding: var(--ag-space-4);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+}
+
+.label {
+  font: var(--ag-type-label);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.07em;
+  color: var(--ag-color-muted);
+}
+
+.input {
+  padding: var(--ag-space-2) var(--ag-space-3);
+  border: var(--ag-stroke-rule) solid var(--ag-color-line);
+  border-radius: var(--ag-radius-control);
+  background: var(--ag-color-paper);
+  font: var(--ag-type-body);
+  resize: vertical;
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--ag-color-accent);
+  box-shadow: 0 0 0 1px var(--ag-color-accent);
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--ag-color-error);
+}
+
+.hint,
+.meta {
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-1);
+  font: var(--ag-type-small);
+  color: var(--ag-color-error);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-3);
+}
+
+.audience {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  font: var(--ag-type-label);
+}
+
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-3);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+}
+
+.item {
+  display: grid;
+  gap: var(--ag-space-1);
+  padding: var(--ag-space-3) 0;
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+.body {
+  font-weight: 600;
+}
+
+.reach {
+  display: grid;
+  gap: var(--ag-space-1);
+  font: var(--ag-type-small);
+}
+
+.reachBar {
+  display: block;
+  max-width: 320px;
+  height: 6px;
+  border-radius: var(--ag-radius-full);
+  background: var(--ag-color-line);
+  overflow: hidden;
+}
+
+.reachBar > span {
+  display: block;
+  height: 100%;
+  background: var(--ag-color-success);
+}
