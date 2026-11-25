@@ -1,0 +1,146 @@
+.page {
+  display: grid;
+  /* minmax(0, 1fr): wide scrollers (track chips) must not widen the page on phones. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-6);
+}
+
+/* Cover: generated art (or the organizer's image) with the event name in the event's voice font.
+   Phones: art band, name below it (legible over any art). From 600px: name over the art. */
+.cover {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  margin: calc(-1 * var(--ag-space-4)) calc(-1 * var(--ag-space-4)) 0;
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  background: var(--ag-color-paper);
+}
+
+.coverArt {
+  position: relative;
+  height: 128px;
+}
+
+.coverArt svg,
+img.coverArt {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverText {
+  position: relative;
+  display: grid;
+  gap: var(--ag-space-1);
+  padding: var(--ag-space-3) var(--ag-space-4) var(--ag-space-4);
+}
+
+@media (min-width: 600px) {
+  .cover {
+    min-height: 240px;
+    margin: 0;
+    border: 0;
+    border-radius: var(--ag-radius-card);
+  }
+
+  .coverArt {
+    position: absolute;
+    inset: 0;
+    height: auto;
+  }
+
+  .coverText {
+    align-content: end;
+    max-width: 60%;
+    padding: var(--ag-space-6);
+  }
+}
+
+/* Forum: >= 24px, never bold. */
+.eventName {
+  font: var(--ag-type-h1);
+  font-family: var(--ag-event-name-font);
+  font-size: clamp(28px, 6vw, 44px);
+  line-height: 1.05;
+}
+
+.coverMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ag-space-2);
+  font: var(--ag-type-label);
+  color: var(--ag-color-muted);
+}
+
+.announcement {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border: var(--ag-stroke-hairline) solid var(--ag-color-line);
+  border-left: var(--ag-stroke-stripe) solid var(--ag-color-accent);
+  border-radius: var(--ag-radius-card);
+  background: var(--ag-color-surface);
+}
+
+.announcementIcon {
+  margin-top: 2px;
+  color: var(--ag-color-accent);
+}
+
+.from {
+  color: var(--ag-color-muted);
+}
+
+.announcementBody {
+  font: var(--ag-type-body);
+  font-weight: 600;
+}
+
+.section {
+  display: grid;
+  gap: var(--ag-space-3);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ag-space-3);
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ag-size-target-min);
+  color: var(--ag-color-accent);
+  font: var(--ag-type-label);
+  text-underline-offset: 3px;
+}
+
+.empty {
+  display: grid;
+  gap: var(--ag-space-1);
+  padding: var(--ag-space-5) 0;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+.emptyTitle {
+  font: var(--ag-type-title);
+}
+
+.muted {
+  color: var(--ag-color-muted);
+}
+
+.about {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ag-size-target-min);
+  color: var(--ag-color-muted);
+  font: var(--ag-type-small);
+}

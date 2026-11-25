@@ -1,0 +1,33 @@
+.dot {
+  display: inline-block;
+  flex: none;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--ag-radius-full);
+  background: var(--dot);
+}
+
+/* Second run (tracks 9–16): ring dot. */
+.ring {
+  background: transparent;
+  box-shadow: var(--ag-track-ring) var(--dot);
+}
+
+/* Light theme: yellow and orange get a 1px edge. */
+.edge {
+  box-shadow: var(--ag-track-edge);
+}
+
+.edge.ring {
+  box-shadow: var(--ag-track-ring) var(--dot), var(--ag-track-edge);
+}
+
+:root[data-theme="dark"] .edge:not(.ring) {
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .edge:not(.ring) {
+    box-shadow: none;
+  }
+}

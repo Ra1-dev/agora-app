@@ -1,0 +1,158 @@
+/* The programme row (S12 §12.4, S05): time column, hairline separators, no card boxes. */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  column-gap: var(--ag-space-3);
+  padding: var(--ag-space-3) 0;
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+@media (min-width: 600px) {
+  .row {
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: var(--ag-space-4);
+    padding: var(--ag-space-4) 0;
+  }
+}
+
+/* Overlaps: hatched in the warning colour (with words, never colour alone). */
+.overlap {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 7px,
+    color-mix(in srgb, var(--ag-color-warning) 16%, transparent) 7px 9px
+  );
+}
+
+.time {
+  display: grid;
+  align-content: start;
+  gap: 1px;
+  font: var(--ag-type-time);
+  font-variant-numeric: tabular-nums;
+}
+
+.time small {
+  font: var(--ag-type-small);
+  font-size: 13px;
+  color: var(--ag-color-muted);
+}
+
+.old {
+  font: var(--ag-type-small);
+  font-size: 13px;
+  color: var(--ag-color-muted);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-1);
+  min-width: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+  color: var(--ag-color-muted);
+  font-size: 14px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ag-space-1);
+}
+
+.title {
+  font: var(--ag-type-title);
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Stretch the title link over the row; buttons stay above it. */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.canceled .title {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  color: var(--ag-color-muted);
+}
+
+.ended .time span {
+  color: var(--ag-color-muted);
+}
+
+.message {
+  font: var(--ag-type-small);
+}
+
+.accent {
+  color: var(--ag-color-accent);
+}
+
+.warning {
+  color: var(--ag-color-warning);
+  font-weight: 600;
+}
+
+.error {
+  color: var(--ag-color-error);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--ag-color-muted);
+}
+
+.foot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-2);
+  margin-top: var(--ag-space-1);
+}
+
+.speakers {
+  min-width: 0;
+  overflow: hidden;
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Saved session moved by the organizer: the row flashes once (S17). */
+.row[data-flash] {
+  animation: flash var(--ag-duration-ceremony) var(--ag-ease-standard);
+}
+
+@keyframes flash {
+  30% {
+    background-color: color-mix(in srgb, var(--ag-color-accent) 14%, transparent);
+  }
+}
