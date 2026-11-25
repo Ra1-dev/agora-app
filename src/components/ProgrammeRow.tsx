@@ -81,7 +81,7 @@ export function ProgrammeRow({ row, slug, timeZone, ink, showDay, note, headingL
         <div className={styles.foot}>
           <span className={styles.speakers}>{speakers}</span>
           {state.overlaps ? (
-            <Link href={`/e/${slug}/schedule?resolve=${session.id}`} className={buttonClass({ variant: "secondary", size: "sm" })}>
+            <Link href={`/e/${slug}/schedule?resolve=${session.id}`} className={buttonClass({ variant: "secondary", size: "sm" })} scroll={false}>
               Resolve
             </Link>
           ) : (
