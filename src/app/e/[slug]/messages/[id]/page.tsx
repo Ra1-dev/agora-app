@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Avatar } from "@/components/Avatar";
 import { Icon } from "@/components/Icon";
+import { RefreshOnce } from "@/components/RefreshOnce";
 import { requireMember } from "@/lib/auth/current-user";
 import { now } from "@/lib/clock";
 import { visibleProfile } from "@/lib/people/visibility";
@@ -36,11 +37,12 @@ export default async function ConversationPage({ params }: Props) {
   const profile = visibleProfile(other, viewer.id);
   const name = firstName(other.name);
   const thread = connection.status === "accepted" ? listMessages(connection.id) : [];
-  markConversationRead(event.id, connection.id, viewer.id, current);
+  const markedRead = markConversationRead(event.id, connection.id, viewer.id, current);
 
   let lastDay = "";
   return (
     <div className={styles.page}>
+      <RefreshOnce when={markedRead > 0} />
       <Link href={`/e/${slug}/people`} className={styles.back}>
         <Icon name="back" />
         People

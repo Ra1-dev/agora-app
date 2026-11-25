@@ -3,11 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/Button";
+import { LiveUpdates } from "@/components/LiveUpdates";
 import { ToastProvider } from "@/components/Toast";
 import { ViewingAs } from "@/components/ViewingAs";
 import { accentCss, deriveAccent } from "@/lib/brand/accent";
+import { now } from "@/lib/clock";
 import { AccessError, requireMember } from "@/lib/auth/current-user";
 import { getEventBySlug } from "@/server/events";
+import { latestNotificationId } from "@/server/notify";
 import { unreadCount } from "@/server/program";
 import { EventTabs } from "./EventTabs";
 import styles from "./event.module.css";
@@ -67,7 +70,8 @@ export default async function EventLayout({ children, params }: Props) {
           </main>
         ) : (
           <>
-            <EventTabs slug={event.slug} unread={unreadCount(event.id, viewerId)} />
+            <LiveUpdates key={viewerId} slug={event.slug} since={latestNotificationId(event.id, viewerId)} />
+            <EventTabs slug={event.slug} unread={unreadCount(event.id, viewerId, now())} />
             <main className={styles.main}>{children}</main>
           </>
         )}

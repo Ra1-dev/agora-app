@@ -1,0 +1,16 @@
+/* Offline notice (S12 §12.6): icon and words, AGORA says "we" only for its own state. */
+.offline {
+  position: sticky;
+  top: 56px;
+  z-index: var(--ag-layer-sticky);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ag-space-2);
+  min-height: 40px;
+  padding: var(--ag-space-2) var(--ag-space-4);
+  background: var(--ag-color-ink);
+  color: var(--ag-color-surface);
+  font: var(--ag-type-small);
+  text-align: center;
+}

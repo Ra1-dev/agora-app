@@ -151,6 +151,21 @@
   animation: flash var(--ag-duration-ceremony) var(--ag-ease-standard);
 }
 
+/* Room change: the new room slides in, underlined (S17). */
+.row[data-flash] [data-room] {
+  display: inline-block;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  animation: room-in var(--ag-duration-slow) var(--ag-ease-standard);
+}
+
+@keyframes room-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--ag-motion-shift) / 2));
+  }
+}
+
 @keyframes flash {
   30% {
     background-color: color-mix(in srgb, var(--ag-color-accent) 14%, transparent);

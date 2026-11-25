@@ -1,0 +1,131 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ag-space-3);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ag-space-3);
+}
+
+.title {
+  font: var(--ag-type-h1);
+}
+
+.muted {
+  color: var(--ag-color-muted);
+}
+
+.list {
+  margin: var(--ag-space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+}
+
+/* Inbox row (S12 §12.6): icon coloured by meaning, what changed, what to do, age, unread dot. */
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--ag-space-3);
+  padding: var(--ag-space-3) 0;
+  border-bottom: var(--ag-stroke-hairline) solid var(--ag-color-line);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ag-radius-full);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.warning {
+  color: var(--ag-color-warning);
+}
+
+.error {
+  color: var(--ag-color-error);
+}
+
+.accent {
+  color: var(--ag-color-accent);
+}
+
+.muted.icon {
+  color: var(--ag-color-muted);
+}
+
+.text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.itemTitle {
+  font: var(--ag-type-label);
+  font-size: 16px;
+}
+
+.unread .itemTitle {
+  font-weight: 700;
+}
+
+.body {
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  margin-top: var(--ag-space-1);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-1);
+  min-height: var(--ag-size-target-min);
+  color: var(--ag-color-accent);
+  font: var(--ag-type-label);
+  text-decoration: none;
+}
+
+.action:hover {
+  text-decoration: underline;
+}
+
+.side {
+  display: grid;
+  justify-items: end;
+  align-content: start;
+  gap: var(--ag-space-2);
+}
+
+.time {
+  font: var(--ag-type-small);
+  color: var(--ag-color-muted);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--ag-radius-full);
+  background: var(--ag-color-accent);
+}
+
+.empty {
+  display: grid;
+  gap: var(--ag-space-1);
+  padding: var(--ag-space-6) 0;
+  border-top: var(--ag-stroke-rule) solid var(--ag-color-ink);
+}
+
+.emptyTitle {
+  font: var(--ag-type-title);
+}

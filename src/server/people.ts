@@ -225,8 +225,8 @@ export function sendMessage(eventId: string, connectionId: string, senderId: str
 }
 
 /** Opening a conversation marks its message notifications as read. */
-export function markConversationRead(eventId: string, connectionId: string, userId: string, now: number) {
-  getDb()
+export function markConversationRead(eventId: string, connectionId: string, userId: string, now: number): number {
+  return getDb()
     .update(notifications)
     .set({ readAt: now })
     .where(
@@ -238,7 +238,7 @@ export function markConversationRead(eventId: string, connectionId: string, user
         isNull(notifications.readAt),
       ),
     )
-    .run();
+    .run().changes;
 }
 
 /** Latest message per connection, for the People list. */

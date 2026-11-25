@@ -1,6 +1,6 @@
 // Program data for participant screens: sessions with track, room, speakers and save counts,
 // plus the viewer's saves, interests, picks and search.
-import { and, asc, count, eq, isNull } from "drizzle-orm";
+import { and, asc, count, eq, isNull, lte } from "drizzle-orm";
 import { getDb } from "@/db/client";
 import {
   interactions,
@@ -158,12 +158,20 @@ export function declaredInterests(userId: string): string[] {
     .map((r) => r.label);
 }
 
-export function unreadCount(eventId: string, userId: string): number {
+/** Unread notifications up to the demo clock (matches what Inbox lists). */
+export function unreadCount(eventId: string, userId: string, now: number): number {
   return (
     getDb()
       .select({ n: count() })
       .from(notifications)
-      .where(and(eq(notifications.eventId, eventId), eq(notifications.userId, userId), isNull(notifications.readAt)))
+      .where(
+        and(
+          eq(notifications.eventId, eventId),
+          eq(notifications.userId, userId),
+          isNull(notifications.readAt),
+          lte(notifications.createdAt, now),
+        ),
+      )
       .get()?.n ?? 0
   );
 }
